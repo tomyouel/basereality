@@ -38,7 +38,7 @@ const UI: FC = () => {
               }
               style={{ cursor: 'pointer' }}
             >
-              Github
+              GitHub
             </RoundedModule>
             <RoundedModule
               onClick={() =>
