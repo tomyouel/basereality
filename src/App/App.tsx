@@ -32,7 +32,6 @@ const UI: FC = () => {
         <HorizontalFlexbox>
           <RoundedModule>BASE REALITY</RoundedModule>
           <HorizontalFlexbox>
-            <RoundedModule>Client Projects</RoundedModule>
             <RoundedModule
               onClick={() =>
                 window.open('https://github.com/tomyouel', '_blank')
