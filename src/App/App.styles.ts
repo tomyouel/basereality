@@ -16,10 +16,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const RoundedModule = styled.div`
-  padding: 10px;
-  margin: 10px;
+  padding: 0.7rem;
+  margin: 0.5rem;
   border-color: white;
-  border-radius: 9px;
+  border-radius: 0.6rem;
   border-style: solid;
   font-family: 'KanitSemiBold', sans-serif;
 `;
@@ -29,13 +29,14 @@ const Copy = styled.span`
 `;
 
 const Header = styled.span`
-  font-size: 12px;
+  font-size: 8rem;
 `;
 
 const Hero = styled.div`
-  padding: 10px;
-  margin: 10px;
-  font-size: 100px;
+  padding: 0.7rem;
+  margin: 0.5rem;
+  border-color: white;
+  font-size: 8rem;
   width: 20%;
   line-height: 100%;
 `;

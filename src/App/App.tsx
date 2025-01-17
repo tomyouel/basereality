@@ -32,8 +32,23 @@ const UI: FC = () => {
         <HorizontalFlexbox>
           <RoundedModule>BASE REALITY</RoundedModule>
           <HorizontalFlexbox>
-            <RoundedModule>Work</RoundedModule>
-            <RoundedModule>GitHub</RoundedModule>
+            <RoundedModule>Client Projects</RoundedModule>
+            <RoundedModule
+              onClick={() =>
+                window.open('https://github.com/tomyouel', '_blank')
+              }
+              style={{ cursor: 'pointer' }}
+            >
+              Github
+            </RoundedModule>
+            <RoundedModule
+              onClick={() =>
+                window.open('https://linkedin.com/in/tomyouel', '_blank')
+              }
+              style={{ cursor: 'pointer' }}
+            >
+              LinkedIn
+            </RoundedModule>
           </HorizontalFlexbox>
         </HorizontalFlexbox>
         <VerticalFlexbox>
