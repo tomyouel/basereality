@@ -25,6 +25,7 @@ function App() {
 }
 
 const UI: FC = () => {
+  const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   return (
     <>
       <FullFlexbox>
@@ -60,6 +61,7 @@ const UI: FC = () => {
                 'Next.js',
                 'TypeScript',
                 'Three.js',
+                'Responsive Design',
                 'AWS',
                 'Redux',
                 'AR',
@@ -79,7 +81,12 @@ const UI: FC = () => {
                 muted
                 autoPlay
                 loop
-                style={{ height: '35rem', borderRadius: '1rem' }}
+                style={{
+                  height: '35rem',
+                  borderRadius: '1rem',
+                  opacity: videoLoaded ? 1 : 0,
+                }}
+                onLoadedMetadata={() => setVideoLoaded(true)}
               />
             </HorizontalFlexbox>
           </VerticalFlexbox>
