@@ -77,7 +77,7 @@ class HeroScene {
       video.autoplay = true;
       video.play();
 
-      const resizeVideoToPowerOfTwo = (video: HTMLVideoElement) => {
+      /*const resizeVideoToPowerOfTwo = (video: HTMLVideoElement) => {
         const canvas = document.createElement('canvas');
 
         const width = Math.pow(
@@ -100,7 +100,7 @@ class HeroScene {
         texture.needsUpdate = true;
 
         return texture;
-      };
+      };*/
 
       const geometry = new PlaneGeometry();
       const texture = new VideoTexture(video); //resizeVideoToPowerOfTwo(video);
