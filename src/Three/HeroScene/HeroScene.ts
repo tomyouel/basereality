@@ -5,8 +5,6 @@ import {
   Color,
   AmbientLight,
   DirectionalLight,
-  BoxGeometry,
-  MeshStandardMaterial,
   Mesh,
   PlaneGeometry,
   VideoTexture,
@@ -15,6 +13,7 @@ import {
   RGBAFormat,
   MeshBasicMaterial,
   sRGBEncoding,
+  CanvasTexture,
 } from 'three';
 
 import Showreel from '../../assets/showreel.mp4';
@@ -58,7 +57,7 @@ class HeroScene {
     const directionalLight = new DirectionalLight(new Color(0xffffff), 1);
     scene.add(directionalLight);
 
-    const createBox = () => {
+    /*const createBox = () => {
       const geometry = new BoxGeometry();
       const material = new MeshStandardMaterial({
         color: new Color(0xffffff),
@@ -68,17 +67,43 @@ class HeroScene {
       const mesh = new Mesh(geometry, material);
       scene.add(mesh);
       //renderAnimations.push(() => (mesh.rotation.x += 0.01));
-    };
+    };*/
 
     const createPlane = () => {
       const video = document.createElement('video');
       video.src = Showreel;
       video.loop = true;
       video.muted = true;
-      video.play();
+      video.autoplay = true;
+      video.playsInline = true;
+
+      const resizeVideoToPowerOfTwo = (video: HTMLVideoElement) => {
+        const canvas = document.createElement('canvas');
+
+        const width = Math.pow(
+          2,
+          Math.floor(Math.log(video.videoWidth) / Math.log(2)),
+        );
+        const height = Math.pow(
+          2,
+          Math.floor(Math.log(video.videoHeight) / Math.log(2)),
+        );
+
+        canvas.width = width;
+        canvas.height = height;
+
+        const context = canvas.getContext('2d');
+
+        context?.drawImage(video, 0, 0, width, height);
+
+        const texture = new CanvasTexture(canvas);
+        texture.needsUpdate = true;
+
+        return texture;
+      };
 
       const geometry = new PlaneGeometry();
-      const texture = new VideoTexture(video);
+      const texture = resizeVideoToPowerOfTwo(video);
       texture.minFilter = LinearFilter;
       texture.magFilter = LinearFilter;
       texture.format = RGBAFormat;
@@ -95,8 +120,6 @@ class HeroScene {
         const { videoWidth, videoHeight } = video;
         const scale = 0.0025;
         mesh.scale.set(videoWidth * scale, videoHeight * scale, 1);
-
-        //createGlassPlane(videoWidth * scale, videoHeight * scale);
       });
     };
 

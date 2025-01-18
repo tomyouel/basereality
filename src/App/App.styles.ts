@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'KanitSemiBold', sans-serif;
+    overflow: hidden;
+    overscroll-behavior-y: contain;
   }
 `;
 
@@ -29,14 +31,14 @@ const Copy = styled.span`
 `;
 
 const Header = styled.span`
-  font-size: 8rem;
+  font-size: 4rem;
 `;
 
 const Hero = styled.div`
   padding: 0.7rem;
   margin: 0.5rem;
   border-color: white;
-  font-size: 8rem;
+  font-size: 4rem;
   width: 20%;
   line-height: 100%;
 `;
