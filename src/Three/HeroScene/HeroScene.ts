@@ -13,7 +13,7 @@ import {
   RGBAFormat,
   MeshBasicMaterial,
   sRGBEncoding,
-  CanvasTexture,
+  //CanvasTexture,
 } from 'three';
 
 import Showreel from '../../assets/showreel.mp4';
