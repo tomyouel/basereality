@@ -75,7 +75,7 @@ class HeroScene {
       video.loop = true;
       video.muted = true;
       video.autoplay = true;
-      video.playsInline = true;
+      video.play();
 
       const resizeVideoToPowerOfTwo = (video: HTMLVideoElement) => {
         const canvas = document.createElement('canvas');
@@ -103,7 +103,7 @@ class HeroScene {
       };
 
       const geometry = new PlaneGeometry();
-      const texture = resizeVideoToPowerOfTwo(video);
+      const texture = new VideoTexture(video); //resizeVideoToPowerOfTwo(video);
       texture.minFilter = LinearFilter;
       texture.magFilter = LinearFilter;
       texture.format = RGBAFormat;

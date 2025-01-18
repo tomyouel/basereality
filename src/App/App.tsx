@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import './App.css';
 import {
   RoundedModule,
@@ -9,7 +9,7 @@ import {
   GlobalStyle,
 } from './App.styles';
 
-import HeroScene from '../Three/HeroScene/HeroScene';
+import Showreel from '../assets/showreel.mp4';
 
 type UIReelProps = {
   reel: string[];
@@ -20,7 +20,6 @@ function App() {
     <>
       <GlobalStyle />
       <UI />
-      <THREEScene />
     </>
   );
 }
@@ -51,7 +50,9 @@ const UI: FC = () => {
           </HorizontalFlexbox>
         </HorizontalFlexbox>
         <VerticalFlexbox>
-          <HorizontalFlexbox>
+          <HorizontalFlexbox
+            style={{ position: 'absolute', width: '100%', height: 'auto' }}
+          >
             <UIReel
               reel={[
                 'React',
@@ -62,10 +63,26 @@ const UI: FC = () => {
                 'AWS',
                 'Redux',
                 'AR',
+                '8th Wall',
                 'Pixel Streaming',
               ]}
             />
           </HorizontalFlexbox>
+
+          <VerticalFlexbox>
+            <HorizontalFlexbox
+              style={{ justifyContent: 'center', width: '100%' }}
+            >
+              <video
+                src={Showreel}
+                playsInline
+                muted
+                autoPlay
+                loop
+                style={{ height: '35rem', borderRadius: '1rem' }}
+              />
+            </HorizontalFlexbox>
+          </VerticalFlexbox>
         </VerticalFlexbox>
       </FullFlexbox>
     </>
@@ -91,7 +108,7 @@ const UIReel: FC<UIReelProps> = (props: UIReelProps) => {
   return <Hero>{heroCopy}</Hero>;
 };
 
-const THREEScene: FC = () => {
+/*const THREEScene: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null!);
 
   return (
@@ -104,6 +121,6 @@ const THREEScene: FC = () => {
       }}
     />
   );
-};
+};*/
 
 export default App;

@@ -70,6 +70,7 @@ const FullFlexbox = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  background: linear-gradient(0deg, #ffffff 0%, #009dff 30%);
 `;
 
 export {
