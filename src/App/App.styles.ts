@@ -34,13 +34,14 @@ const Header = styled.span`
   font-size: 4rem;
 `;
 
-const Hero = styled.div`
+const Hero = styled.span`
   padding: 0.7rem;
   margin: 0.5rem;
   border-color: white;
   font-size: 4rem;
   width: 20%;
   line-height: 100%;
+  transition: opacity 1s ease-in-out;
 `;
 
 const Logo = styled.div`
@@ -62,6 +63,12 @@ const VerticalFlexbox = styled.div`
   height: 100%;
 `;
 
+const HeroVideo = styled.video`
+  height: 35rem;
+  borderradius: 1rem;
+  transition: opacity 1s ease-in-out;
+`;
+
 const FullFlexbox = styled.div`
   position: absolute;
   left: 0;
@@ -78,6 +85,7 @@ export {
   FullFlexbox,
   VerticalFlexbox,
   HorizontalFlexbox,
+  HeroVideo,
   Logo,
   Hero,
   Header,

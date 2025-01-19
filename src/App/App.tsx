@@ -7,12 +7,14 @@ import {
   VerticalFlexbox,
   Hero,
   GlobalStyle,
+  HeroVideo,
 } from './App.styles';
 
 import Showreel from '../assets/showreel.mp4';
 
 type UIReelProps = {
   reel: string[];
+  opacity: boolean;
 };
 
 function App() {
@@ -26,6 +28,15 @@ function App() {
 
 const UI: FC = () => {
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
+  const [displayReel, setDisplayReel] = useState<boolean>(false);
+
+  useEffect(() => {
+    let timeout: number;
+    if (videoLoaded) {
+      timeout = setTimeout(() => setDisplayReel(true), 4000);
+    }
+    return () => clearTimeout(timeout);
+  }, [videoLoaded]);
   return (
     <>
       <FullFlexbox>
@@ -56,34 +67,30 @@ const UI: FC = () => {
           >
             <UIReel
               reel={[
-                'React',
-                'Frontend',
-                'Next.js',
+                'Creative Frontend',
                 'TypeScript',
+                'React',
                 'Three.js',
-                'Responsive Design',
-                'AWS',
+                'Next.js',
                 'Redux',
-                'AR',
+                'Web AR',
                 '8th Wall',
-                'Pixel Streaming',
+                'AWS',
               ]}
+              opacity={displayReel}
             />
           </HorizontalFlexbox>
-
           <VerticalFlexbox>
             <HorizontalFlexbox
               style={{ justifyContent: 'center', width: '100%' }}
             >
-              <video
+              <HeroVideo
                 src={Showreel}
                 playsInline
                 muted
                 autoPlay
                 loop
                 style={{
-                  height: '35rem',
-                  borderRadius: '1rem',
                   opacity: videoLoaded ? 1 : 0,
                 }}
                 onLoadedMetadata={() => setVideoLoaded(true)}
@@ -96,12 +103,11 @@ const UI: FC = () => {
   );
 };
 
-const UIReel: FC<UIReelProps> = (props: UIReelProps) => {
-  const { reel } = props;
-
-  const [heroCopy, setHeroCopy] = useState<string>(props.reel[0]);
+const UIReel: FC<UIReelProps> = ({ reel, opacity }) => {
+  const [heroCopy, setHeroCopy] = useState<string>(reel[0]);
 
   useEffect(() => {
+    if (!opacity) return;
     const interval = setInterval(() => {
       setHeroCopy((heroCopy) => {
         const index = reel.findIndex((value) => heroCopy === value);
@@ -110,9 +116,9 @@ const UIReel: FC<UIReelProps> = (props: UIReelProps) => {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [opacity]);
 
-  return <Hero>{heroCopy}</Hero>;
+  return <Hero style={{ opacity: opacity ? 1 : 0 }}>{heroCopy}</Hero>;
 };
 
 /*const THREEScene: FC = () => {
