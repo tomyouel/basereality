@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import './App.css';
 import {
   RoundedModule,
@@ -27,6 +27,7 @@ function App() {
 }
 
 const UI: FC = () => {
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const [displayReel, setDisplayReel] = useState<boolean>(false);
 
@@ -85,15 +86,21 @@ const UI: FC = () => {
               style={{ justifyContent: 'center', width: '100%' }}
             >
               <HeroVideo
+                ref={heroVideoRef}
                 src={Showreel}
                 playsInline
                 muted
                 autoPlay
-                loop
                 style={{
                   opacity: videoLoaded ? 1 : 0,
                 }}
                 onLoadedMetadata={() => setVideoLoaded(true)}
+                onEnded={() => {
+                  setDisplayReel(false);
+                  heroVideoRef.current!.currentTime = 0;
+                  heroVideoRef.current!.play();
+                  setTimeout(() => setDisplayReel(true), 4000);
+                }}
               />
             </HorizontalFlexbox>
           </VerticalFlexbox>
