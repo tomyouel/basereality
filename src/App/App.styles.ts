@@ -65,7 +65,7 @@ const VerticalFlexbox = styled.div`
 
 const HeroVideo = styled.video`
   height: 35rem;
-  borderradius: 1rem;
+  border-radius: 0.9rem;
   transition: opacity 1s ease-in-out;
 `;
 
